@@ -8,13 +8,13 @@ RSpec::Matchers.define :match_url do |url|
 end
 
 RSpec::Matchers.define :be_an_empty_directory do
-	excludes = %w{. ..}
+	excludes = %w{. ..}.sort
   match do |given|
-    Dir.entries(given) == excludes
+    Dir.entries(given).sort == excludes
   end
 
   failure_message_for_should do |given|
-	  extras = Dir.entries(given) - excludes
+	  extras = Dir.entries(given).sort - excludes
 	  "Directory '#{given}' should have been empty, but includes: '#{extras.inspect}'"
   end
 end
