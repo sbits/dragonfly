@@ -1,3 +1,10 @@
+0.9.13 (2012-11-01)
+===================
+Changes
+-------
+- Relaxed Jeweler Gem version requirements, so it does not depend on an outdated bundler (~> 1.0.0) anymore.
+
+
 0.9.12 (2012-04-08)
 ===================
 Features
