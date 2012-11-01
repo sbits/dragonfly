@@ -12,6 +12,11 @@ describe Item do
   # See extra setup in models / initializer files
 
   describe "defining accessors" do
+	  before(:each) do
+	    Item.class_eval do
+				@dragonfly_attachment_classes = nil
+	    end
+	  end
 
     let(:app1){ Dragonfly[:img] }
     let(:app2){ Dragonfly[:vid] }

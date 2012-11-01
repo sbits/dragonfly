@@ -89,7 +89,7 @@ module Dragonfly
       end
 
       def directory_empty?(path)
-        Dir.entries(path) == ['.','..']
+        Dir.entries(path).sort == ['.','..'].sort
       end
       
       def root_path?(dir)
@@ -130,7 +130,7 @@ module Dragonfly
         containing_directory = Pathname.new(path).dirname
         containing_directory.ascend do |relative_dir|
           dir = absolute(relative_dir)
-          FileUtils.rmdir dir if directory_empty?(dir) && !root_path?(dir)
+					FileUtils.rmdir dir if directory_empty?(dir) && !root_path?(dir)
         end
       end
 

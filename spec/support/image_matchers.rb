@@ -45,6 +45,10 @@ RSpec::Matchers.define :have_size do |size|
   match do |given|
     image_properties(given)[:size].should == size
   end
+
+	failure_message_for_should do |given|
+		"Filesize should have been '#{size}' but is '#{image_properties(given)[:size]}'"
+  end
 end
 
 RSpec::Matchers.define :equal_image do |other|
