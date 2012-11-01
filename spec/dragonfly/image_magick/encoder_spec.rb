@@ -5,7 +5,7 @@ describe Dragonfly::ImageMagick::Encoder do
   before(:all) do
     sample_file = File.dirname(__FILE__) + '/../../../samples/beach.png' # 280x355, 135KB
     @image = Dragonfly::TempObject.new(File.new(sample_file))
-    @image.should have_size('131kb') ## just to be sure
+    @image.should have_size('135KB') ## just to be sure
     @encoder = Dragonfly::ImageMagick::Encoder.new
   end
   
@@ -35,9 +35,10 @@ describe Dragonfly::ImageMagick::Encoder do
 
 			it "should reduce the size of the jpeg image" do
 				image = @encoder.encode(@image, :jpg, '-quality 1')
-				## is not true on my centos 6.3 system, its 1.41kb instead
-				#image.should have_size('1.45KB')
-				image.should have_size('1.41kb')
+				## on my uptodate centos 6.3 system with the default imagemagick its 1.41kb
+				#image.should have_size('1.41kb')
+				## after installing the current imagemagick it's back to 1.45KB
+				image.should have_size('1.45KB')
 			end
 
 			it "should still work even if the image is already in the correct format and args are given" do
