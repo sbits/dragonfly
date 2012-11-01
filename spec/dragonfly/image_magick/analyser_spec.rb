@@ -28,7 +28,9 @@ describe Dragonfly::ImageMagick::Analyser do
   end
 
   it "should return the number of colours" do
-    @analyser.number_of_colours(@image).should == 34703
+	  catch :unable_to_handle do
+		  @analyser.number_of_colours(@image).should == 34703
+	  end
   end
 
   it "should return the depth" do
