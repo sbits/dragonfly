@@ -38,6 +38,9 @@ require 'dragonfly/core_ext/hash'
 Dragonfly::Railtie if defined?(::Rails) # Coz it will autoload
 
 module Dragonfly
+	class DragonflyError < RuntimeError; end
+	class AbstractClassCalled < DragonflyError; end
+
   class << self
 
     def [](*args)
