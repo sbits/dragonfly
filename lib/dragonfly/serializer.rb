@@ -6,27 +6,30 @@ module Dragonfly
     
     # Exceptions
     class BadString < RuntimeError; end
-    
+
     extend self # So we can do Serializer.b64_encode, etc.
     
-    def b64_encode(string)
-      Base64.encode64(string).tr("\n=",'').tr('/','~')
-    end
-    
-    def b64_decode(string)
-      padding_length = string.length % 4
-      Base64.decode64(string.tr('~','/') + '=' * padding_length)
-    end
-    
     def marshal_encode(object)
-      b64_encode(Marshal.dump(object))
+      encode(object)
     end
     
     def marshal_decode(string)
-      Marshal.load(b64_decode(string))
+      decode(string)
+    rescue AbstractClassCalled
+	    raise
     rescue TypeError, ArgumentError => e
-      raise BadString, "couldn't decode #{string} - got #{e}"
+      raise BadString, "#{self.class.name} couldn't decode #{string} - got #{e}"
     end
-    
+
+	  private
+
+    def encode(string)
+      raise AbstractClassCalled.new("Must call a subclass of #{self.class.name}.encode()")
+    end
+
+    def decode(string)
+	    raise AbstractClassCalled.new("Must call a subclass of #{self.class.name}.decode()")
+    end
+
   end
 end
