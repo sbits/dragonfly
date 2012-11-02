@@ -8,6 +8,8 @@ def image_properties(image)
     tempfile.close
   end
   details = `identify #{tempfile.path}`
+
+  ## TODO: the currently used Utils should return this information (DRY)
   # example of details string:
   # myimage.png PNG 200x100 200x100+0+0 8-bit DirectClass 31.2kb
   filename, format, geometry, geometry_2, depth, image_class, size = details.split(' ')
