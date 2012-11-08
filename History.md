@@ -4,6 +4,11 @@ Changes
 -------
 - Relaxed Jeweler Gem version requirements, so it does not depend on an outdated bundler (~> 1.0.0) anymore.
 
+Features
+--------
+Google WebP Image Support
+Limited, shorter serializer (but without a de-serializer yet, doing it inside config/routes.rb in the main app instead
+
 
 0.9.12 (2012-04-08)
 ===================
