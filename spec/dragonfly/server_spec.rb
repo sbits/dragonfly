@@ -131,7 +131,7 @@ describe Dragonfly::Server do
       end
   
       it "should return a 404 when the url is a well-encoded but bad array" do
-        url = "/media/#{Dragonfly::Serializer.marshal_encode([[:egg, {:some => 'args'}]])}"
+        url = "/media/#{@app.serializer.marshal_encode([[:egg, {:some => 'args'}]])}"
         response = request(@server, url)
         response.status.should == 404
         response.body.should == 'Not found'

@@ -3,13 +3,14 @@ require 'base64'
 
 module Dragonfly
   module Serializer
-    
-    # Exceptions
+
     class BadString < RuntimeError; end
 
-    extend self # So we can do Serializer.b64_encode, etc.
+    extend self # So we can do Serializer.marshal_encode, etc.
     
     def marshal_encode(object)
+	    raise BadString.new("Cannot encode an empty object") if object.blank?
+	    #puts "Serializing object: #{object.inspect}"
       encode(object)
     end
     

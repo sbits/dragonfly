@@ -4,6 +4,10 @@ require 'base64'
 module Dragonfly
   module SerializerDefault
 
+		include Dragonfly::Serializer
+
+		extend self # So we can do Serializer.marshal_encode, etc.
+
     private
 
     def encode(string)

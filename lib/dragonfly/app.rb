@@ -52,6 +52,7 @@ module Dragonfly
     configurable_attr :trust_file_extensions, true
     configurable_attr :content_disposition
     configurable_attr :content_filename, Dragonfly::Response::DEFAULT_FILENAME
+    configurable_attr :serializer, Dragonfly::SerializerDefault
 
     attr_reader :analyser
     attr_reader :processor

@@ -41,9 +41,11 @@ module Dragonfly
 
       def plain(width, height, colour, opts={})
         format = opts[:format] || 'png'
+        name = opts[:name] || "plain"
+        colour ||= "none"
         [
           convert(nil, "-size #{width}x#{height} xc:#{colour}", format),
-          {:format => format.to_sym, :name => "plain.#{format}"}
+          {:format => format.to_sym, :name => "#{name}.#{format}"}
         ]
       end
 

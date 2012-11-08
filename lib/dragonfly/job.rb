@@ -166,7 +166,7 @@ module Dragonfly
       end
 
       def deserialize(string, app)
-        from_a(Serializer.marshal_decode(string), app)
+        from_a(app.serializer.marshal_decode(string), app)
       end
 
       def step_abbreviations
@@ -280,7 +280,7 @@ module Dragonfly
     end
 
     def serialize
-      Serializer.marshal_encode(to_a)
+      app.serializer.marshal_encode(to_a)
     end
 
     def unique_signature

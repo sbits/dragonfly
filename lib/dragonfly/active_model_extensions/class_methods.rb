@@ -54,7 +54,7 @@ module Dragonfly
             define_method "retained_#{attribute}=" do |string|
               unless string.blank?
                 begin
-                  dragonfly_attachments[attribute].retained_attrs = Serializer.marshal_decode(string)
+                  dragonfly_attachments[attribute].retained_attrs = app.serializer.marshal_decode(string)
                 rescue Serializer::BadString => e
                   app.log.warn("*** WARNING ***: couldn't update attachment with serialized retained_#{attribute} string #{string.inspect}")              
                 end
@@ -67,7 +67,7 @@ module Dragonfly
             # Define the retained getter
             define_method "retained_#{attribute}" do
               attrs = dragonfly_attachments[attribute].retained_attrs
-              Serializer.marshal_encode(attrs) if attrs
+              app.serializer.marshal_encode(attrs) if attrs
             end
             
           end

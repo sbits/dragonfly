@@ -1277,7 +1277,7 @@ describe Item do
         }
       end.and_return('new/uid')
       @item.preview_image.retain!
-      Dragonfly::Serializer.marshal_decode(@item.retained_preview_image).should == {
+      @app.serializer.marshal_decode(@item.retained_preview_image).should == {
         :uid => 'new/uid',
         :some_analyser_method => 'HELLO',
         :size => 5,
@@ -1314,7 +1314,7 @@ describe Item do
       @app.analyser.add :some_analyser_method do |temp_object|
         temp_object.data.upcase
       end
-      @pending_string = Dragonfly::Serializer.marshal_encode(
+      @pending_string = @app.serializer.marshal_encode(
         :uid => 'new/uid',
         :some_analyser_method => 'HELLO',
         :size => 5,
@@ -1348,7 +1348,7 @@ describe Item do
     end
     
     it "should raise an error if the pending string contains a non-magic attr method" do
-      pending_string = Dragonfly::Serializer.marshal_encode(
+      pending_string = @app.serializer.marshal_encode(
         :uid => 'new/uid',
         :some_analyser_method => 'HELLO',
         :size => 5,
@@ -1370,8 +1370,8 @@ describe Item do
     
     it "should return the pending string again" do
       @item.retained_preview_image = @pending_string
-      Dragonfly::Serializer.marshal_decode(@item.retained_preview_image).should ==
-        Dragonfly::Serializer.marshal_decode(@pending_string)
+      @app.serializer.marshal_decode(@item.retained_preview_image).should ==
+        @app.serializer.marshal_decode(@pending_string)
     end
     
     it "should destroy the old one on save" do
