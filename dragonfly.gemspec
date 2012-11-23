@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "dragonfly"
-  s.version = "0.9.13"
+  s.version = "0.9.14"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Evans"]
@@ -120,6 +120,8 @@ Gem::Specification.new do |s|
     "lib/dragonfly/response.rb",
     "lib/dragonfly/routed_endpoint.rb",
     "lib/dragonfly/serializer.rb",
+    "lib/dragonfly/serializer_default.rb",
+    "lib/dragonfly/serializer_hashtable.rb",
     "lib/dragonfly/server.rb",
     "lib/dragonfly/shell.rb",
     "lib/dragonfly/simple_cache.rb",
@@ -163,7 +165,8 @@ Gem::Specification.new do |s|
     "spec/dragonfly/loggable_spec.rb",
     "spec/dragonfly/middleware_spec.rb",
     "spec/dragonfly/routed_endpoint_spec.rb",
-    "spec/dragonfly/serializer_spec.rb",
+    "spec/dragonfly/serializer_default_spec.rb",
+    "spec/dragonfly/serializer_hashtable_spec.rb",
     "spec/dragonfly/server_spec.rb",
     "spec/dragonfly/shell_spec.rb",
     "spec/dragonfly/simple_cache_spec.rb",
@@ -223,7 +226,8 @@ Gem::Specification.new do |s|
     "spec/dragonfly/loggable_spec.rb",
     "spec/dragonfly/middleware_spec.rb",
     "spec/dragonfly/routed_endpoint_spec.rb",
-    "spec/dragonfly/serializer_spec.rb",
+    "spec/dragonfly/serializer_default_spec.rb",
+    "spec/dragonfly/serializer_hashtable_spec.rb",
     "spec/dragonfly/server_spec.rb",
     "spec/dragonfly/shell_spec.rb",
     "spec/dragonfly/simple_cache_spec.rb",

@@ -3,7 +3,6 @@ require 'spec_helper'
 
 describe Dragonfly::SerializerDefault do
   
-  include Dragonfly::Serializer
   include Dragonfly::SerializerDefault
 
   [
