@@ -13,7 +13,6 @@ module Dragonfly
       private
 
       def convert(temp_object=nil, args='', format=nil)
-	      puts "calling webp convert"
         tempfile = new_tempfile(format)
         tmp_object_path = quote(temp_object.path) if temp_object
         run convert_command, %(#{tmp_object_path} -quiet #{args} -o #{quote(tempfile.path)})

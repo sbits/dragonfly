@@ -6,6 +6,9 @@ module Dragonfly
 
 		include Dragonfly::Serializer
 
+    extend self # So we can do Serializer.marshal_encode, etc.
+
+
     private
 
     def encode(string)
